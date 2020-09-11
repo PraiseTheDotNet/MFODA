@@ -55,11 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Examples\2.20.txt" />
+    <Content Include="Examples\2.21.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Examples\2.6.txt" />
     <Content Include="Examples\2.7.txt" />
     <Content Include="Examples\2.8.txt" />
+    <Content Include="Examples\Custom.txt" />
     <Content Include="input.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

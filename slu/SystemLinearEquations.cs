@@ -31,9 +31,7 @@ namespace slu
                 Console.WriteLine(ConvertArrayToString(tempField));
             }
 
-            double[] x = CalcX(tempField).ToArray();
-            Array.Sort(x, positions);
-            return x.Reverse().ToList();
+            return CalcX(tempField, positions);
         }
 
         private static void CalcTable(double[][] field, int y)
@@ -97,18 +95,23 @@ namespace slu
             return builder.ToString();
         }
 
-        private static List<double> CalcX(double[][] field)
+        private static List<double> CalcX(double[][] field, int[] positions)
         {
-            List<double> result = new List<double>();
-            for(int i = field.Length - 1; i >= 0; --i)
+            var result = new double[positions.Length];
+            //  проходим с последней строки
+            for (int y = field.Length - 1; y >= 0; --y)
             {
-                double res = field[i][field[i].Length - 1];
-                for (int j = 0; j < result.Count; ++j)
-                    res -= result[j] * field[i][field[i].Length - 2 - j];
-                res /= field[i][field[i].Length - 2 - result.Count];
-                result.Add(res);
+                var value = field[y][field[y].Length - 1] / field[y][y];  //  считаем значение
+                //  вычитаем это значение
+                for (int j = y - 1; j >= 0; j--)
+                {
+                    field[j][field[j].Length - 1] -= value * field[j][y];
+                }
+
+                result[positions[y]] = value;
             }
-            return result;
+
+            return result.ToList();
         }
 
         public static double Determinant(double[][] myVect)
