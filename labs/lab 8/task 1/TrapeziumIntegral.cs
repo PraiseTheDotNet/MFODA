@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_1
 {
-    class TrapeziumIntegral : Integral
+    public class TrapeziumIntegral : Integral
     {
         public TrapeziumIntegral(Func func, double a, double b, double h) : base(func, a, b, h)
         {

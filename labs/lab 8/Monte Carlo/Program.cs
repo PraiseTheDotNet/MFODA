@@ -4,22 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using task_1;
+
+using Utils;
+
 namespace Monte_Carlo
 {
-    public delegate double Func(double x);
     class Program
     {
-        static Func func = new Func((x) => 0.37 * Math.Pow(Math.E, Math.Sin(x)));
+        static Func func;
 
         static void Main(string[] args)
         {
-            double a, b;
-            int n;
-            a = ReadDouble("Введите начало отрезка");
-            b = ReadDouble("Введите конец отрезка");
-            n = (int)ReadDouble("Введите число N");
+            Console.WriteLine("Выберите функцию: ");
+            for (int i = 0; i < Functions.FuncsName.Length; ++i)
+            {
+                Console.WriteLine($"{i}: {Functions.FuncsName[i]}");
+            }
+            int index = int.Parse(Console.ReadLine());
+            func = new Func(Functions.Funcs[index]);
+            Console.WriteLine($"Указанный диапазон: {Functions.Diaps[index]}");
+            (double a, double b) = Functions.Diaps[index];
+            int n = (int)ReadDouble("Введите число N");
             double result = MonteCarlo(a, b, n);
             Console.WriteLine($"Метод Монте-Карло: {result:f5}");
+            RectangleIntegral rectangle = new RectangleIntegral(func, a, b, n);
+            TrapeziumIntegral trapeziumIntegral = new TrapeziumIntegral(func, a, b, n);
+            ParabolaIntegral parabolaIntegral = new ParabolaIntegral(func, a, b, n * 2);
+
+            for (int i = 0; i < 3; ++i)
+                Console.WriteLine($"{task_1.Program.RectangleTypeName[i]} прямоугольников: {rectangle.CalcIntegral((RectangleIntegralType)i):f5} с погрешностью: {rectangle.GetErrorDiap((RectangleIntegralType)i):f5}");
+
+            Console.WriteLine($"Трапеция: {trapeziumIntegral.CalcIntegral():f5} с погрешностью: {trapeziumIntegral.GetErrorDiap():f5}");
+            Console.WriteLine($"Парабола: {parabolaIntegral.CalcIntegral():f5} с погрешностью: {parabolaIntegral.GetErrorDiap():f5}");
 
 
 

@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\task 1\Numerical Integration.csproj">
+      <Project>{7917d56c-47c8-4733-92a0-35769eef678b}</Project>
+      <Name>Numerical Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{e96c9c39-9ebd-477a-bdfb-f561b137e68f}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

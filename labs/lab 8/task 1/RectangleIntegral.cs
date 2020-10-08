@@ -13,7 +13,7 @@ namespace task_1
         Right
     }
 
-    class RectangleIntegral : Integral
+    public class RectangleIntegral : Integral
     {
         public RectangleIntegral(Func func, double a, double b, double h) : base(func, a, b, h)
         {

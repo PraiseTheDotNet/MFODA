@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_1
 {
-    abstract class Integral
+    public abstract class Integral
     {
         protected Func function;
         protected double a, b, h;

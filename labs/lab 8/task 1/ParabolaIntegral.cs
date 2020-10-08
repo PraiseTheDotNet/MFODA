@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_1
 {
-    class ParabolaIntegral : Integral
+    public class ParabolaIntegral : Integral
     {
         public ParabolaIntegral(Func func, double a, double b, double h) : base(func, a, b, h)
         {

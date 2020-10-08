@@ -10,7 +10,7 @@ namespace task_1
 {
     public delegate double Func(double x);
 
-    class Program
+    public class Program
     {
         static Func func;
 
