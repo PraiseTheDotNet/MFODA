@@ -77,7 +77,7 @@ namespace Middle
                 }
                 index = ReadInt();
             }
-            while (index == -1 || index >= Funcs.Length);
+            while (index <= -1 || index >= Funcs.Length);
 
             return index;
         }
